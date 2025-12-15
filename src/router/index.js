@@ -3,7 +3,6 @@ import FormPage from '../views/FormPage.vue'
 import QuizPage from '../views/QuizPage.vue'
 import ThankYouPage from '../views/ThankYouPage.vue'
 import ServiceUnavailablePage from '../views/ServiceUnavailablePage.vue'
-import InvalidLinkPage from '../views/InvalidLinkPage.vue'
 import NotFoundPage from '../views/NotFoundPage.vue'
 
 const router = createRouter({
@@ -30,11 +29,6 @@ const router = createRouter({
       component: ServiceUnavailablePage
     },
     {
-      path: '/invalid-link',
-      name: 'invalid-link',
-      component: InvalidLinkPage
-    },
-    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: NotFoundPage
@@ -48,7 +42,7 @@ router.beforeEach((to, from, next) => {
     
     if (!dealerId) {
       if (to.name === 'form') {
-        return next({ name: 'invalid-link' })
+        return next({ name: 'not-found' })
       }
     }
   }
