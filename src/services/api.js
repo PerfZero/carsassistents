@@ -1,4 +1,5 @@
 const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT || 'https://api.example.com/survey'
+const USE_MOCK_API = import.meta.env.VITE_USE_MOCK_API === 'true' || !import.meta.env.VITE_API_ENDPOINT || import.meta.env.VITE_API_ENDPOINT === 'https://api.example.com/survey'
 const REQUEST_TIMEOUT = 3000
 
 const logRequest = (data) => {
@@ -11,7 +12,30 @@ const logResponse = (response, data) => {
   console.log(`[${timestamp}] API Response [${response.status}]:`, JSON.stringify(data, null, 2))
 }
 
+const mockApiResponse = (data) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      logRequest(data)
+      const mockResponse = {
+        code: 'OK',
+        message: { text: '' }
+      }
+      logResponse({ status: 200 }, mockResponse)
+      resolve({
+        success: true,
+        code: 'OK',
+        message: { text: '' }
+      })
+    }, 500)
+  })
+}
+
 export const submitSurveyResults = async (data) => {
+  if (USE_MOCK_API) {
+    console.log('[MOCK API] Using mock API response')
+    return await mockApiResponse(data)
+  }
+
   logRequest(data)
 
   const controller = new AbortController()
