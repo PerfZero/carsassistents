@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+@font-face {
+  font-family: 'GT Walsheim Pro';
+  src: url('./fonts/gtwalsheimpro_condensedmedium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Walsheim Pro';
+  src: url('./fonts/gtwalsheimpro_condensedmediumoblique.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-gt-walsheim {
+  font-family: 'GT Walsheim Pro', sans-serif;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #204A8A;
+  border-color: #204A8A;
+}
+
+input::placeholder {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #a7a7a7;
+}
