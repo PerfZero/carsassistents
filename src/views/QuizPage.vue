@@ -34,7 +34,7 @@
           <label
             v-for="(option, index) in questionsList[currentQuestion].options"
             :key="index"
-            class="flex items-center gap-3 cursor-pointer w-[592px] mb-6"
+            class="flex items-center gap-3 cursor-pointer w-[592px] mb-6  w-full" 
           >
             <div class="relative flex items-center justify-center w-5 h-5 shrink-0">
               <input
@@ -49,7 +49,7 @@
                 :class="answers[currentQuestion] === index ? 'border-[5px] border-[#204A8A]' : 'border border-[#474A51]'"
               ></div>
             </div>
-            <span class="text-[18px] font-normal text-[#272827] leading-[1.222em]">{{ option }}</span>
+            <span class="text-[18px] font-normal text-[#272827] leading-[1.222em] text-balance">{{ option }}</span>
           </label>
         </div>
 
